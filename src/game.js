@@ -32,6 +32,29 @@ export default class Game {
             [0,1,0],
             [1,1,1],
             [0,0,0]
+        ],
+        rotationIndex:0,
+        rotations:[
+            [
+            [0,1,0],
+            [1,1,1],
+            [0,0,0]
+            ],
+            [
+            [0,1,0],
+            [0,1,1],
+            [0,1,0]
+            ],
+            [
+            [0,0,0],
+            [1,1,1],
+            [0,1,0]
+            ],
+            [
+            [0,1,0],
+            [1,1,0],
+            [0,1,0]
+            ]
         ]
     };
     
@@ -55,6 +78,12 @@ export default class Game {
             this.lockPiece();
         }
     }
+
+    rotatePiece(){
+        this.activePiece.rotationIndex = (this.activePiece.rotationIndex + 1) % 4;
+        return this.activePiece;
+    }
+
 
     hasCollision(){
         const {y:pieceY, x:pieceX, blocks} = this.activePiece;
